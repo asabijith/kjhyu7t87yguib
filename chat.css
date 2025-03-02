@@ -1,0 +1,1297 @@
+  /* Base styles */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: #333;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+/* Chat container */
+.chat-container {
+    display: flex;
+    height: 100vh;
+    max-width: 1600px;
+    margin: 0 auto;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Sidebar */
+.sidebar {
+    width: 280px;
+    background-color: #ffffff;
+    border-right: 2px solid #dbe6f7;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-header {
+    padding: 20px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.sidebar-header h2 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.new-chat-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 10px;
+    background: radial-gradient(circle at top, #4160fb , #c34ba3);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.new-chat-button:hover {
+    background-color: #3a5ce5;
+}
+
+.chat-history {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.chat-item {
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chat-item:hover {
+    background-color: #f0f0f0;
+}
+
+.chat-item.active {
+    background-color: #e6e9ff;
+    font-weight: 500;
+}
+
+.sidebar-footer {
+    padding: 15px;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-avatar img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-name {
+    font-weight: 500;
+}
+
+.logout-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 8px;
+    background-color: transparent;
+    color: #666;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.logout-button:hover {
+    background-color: #f0f0f0;
+}
+
+/* Chat main */
+.chat-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.chat-header {
+    padding: 20px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.chat-header h3 {
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.messages-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.welcome-message {
+    text-align: center;
+    max-width: 600px;
+    margin: 40px auto;
+}
+
+.welcome-message h1 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.welcome-message p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.example-prompts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 10px;
+}
+
+.example-prompt {
+    padding: 12px;
+    background-size: 100% 100%;
+    background-position: 0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px,0px 0px;
+    background-image: radial-gradient(18% 28% at 24% 50%, #CEFAFFFF 7%, #073AFF00 100%),radial-gradient(18% 28% at 18% 71%, #FFFFFF59 6%, #073AFF00 100%),radial-gradient(70% 53% at 36% 76%, #73F2FFFF 0%, #073AFF00 100%),radial-gradient(42% 53% at 15% 94%, #FFFFFFFF 7%, #073AFF00 100%),radial-gradient(42% 53% at 34% 72%, #FFFFFFFF 7%, #073AFF00 100%),radial-gradient(18% 28% at 35% 87%, #FFFFFFFF 7%, #073AFF00 100%),radial-gradient(31% 43% at 7% 98%, #FFFFFFFF 24%, #073AFF00 100%),radial-gradient(21% 37% at 72% 23%, #ffffff9c 24%, #073AFF00 100%),radial-gradient(35% 56% at 91% 74%, #8A4FFFF5 9%, #073AFF00 100%),radial-gradient(74% 86% at 67% 38%, #fffffff5 24%, #073AFF00 100%),linear-gradient(125deg, #4EB5FFFF 1%, #4C00FCFF 100%);
+    border: 1px solid #e0e6ff;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: left;
+    transition: background-color 0.2s;
+}
+
+.example-prompt:hover {
+    background-color: #e6e9ff;
+}
+
+.message {
+    display: flex;
+    gap: 12px;
+    max-width: 80%;
+}
+
+.user-message {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+}
+
+.assistant-message {
+    align-self: flex-start;
+}
+
+.message-avatar img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.message-content {
+    background-color: #ffffff;
+    padding: 12px;
+    border-radius: 12px;
+    border-top-left-radius: 0;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+}
+
+.user-message .message-content {
+    background-color: #4a6cf7;
+    color: white;
+    border-radius: 12px;
+    border-top-right-radius: 0;
+}
+
+.message-header {
+    margin-bottom: 5px;
+}
+
+.message-name {
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.message-text {
+    line-height: 1.5;
+}
+
+.message-text code {
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-family: monospace;
+}
+
+.user-message .message-text code {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.message-text pre {
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 10px;
+    border-radius: 6px;
+    overflow-x: auto;
+    margin: 10px 0;
+}
+
+.user-message .message-text pre {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.typing-indicator {
+    display: flex;
+    gap: 4px;
+    padding: 8px 0;
+}
+.svg-spinners--gooey-balls-1 {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cfilter id='svgSpinnersGooeyBalls10'%3E%3CfeGaussianBlur in='SourceGraphic' result='y' stdDeviation='1.5'/%3E%3CfeColorMatrix in='y' result='z' values='1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 18 -7'/%3E%3CfeBlend in='SourceGraphic' in2='z'/%3E%3C/filter%3E%3C/defs%3E%3Cg fill='%230066ff' filter='url(%23svgSpinnersGooeyBalls10)'%3E%3Ccircle cx='4' cy='12' r='3'%3E%3Canimate attributeName='cx' calcMode='spline' dur='0.75s' keySplines='.56,.52,.17,.98;.56,.52,.17,.98' repeatCount='indefinite' values='4;9;4'/%3E%3Canimate attributeName='r' calcMode='spline' dur='0.75s' keySplines='.56,.52,.17,.98;.56,.52,.17,.98' repeatCount='indefinite' values='3;8;3'/%3E%3C/circle%3E%3Ccircle cx='15' cy='12' r='8'%3E%3Canimate attributeName='cx' calcMode='spline' dur='0.75s' keySplines='.56,.52,.17,.98;.56,.52,.17,.98' repeatCount='indefinite' values='15;20;15'/%3E%3Canimate attributeName='r' calcMode='spline' dur='0.75s' keySplines='.56,.52,.17,.98;.56,.52,.17,.98' repeatCount='indefinite' values='8;3;8'/%3E%3C/circle%3E%3C/g%3E%3C/svg%3E");
+  }
+  .fluent-color--bot-sparkle-24 {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none'%3E%3Cpath fill='url(%23fluentColorBotSparkle246)' d='M17.753 14a2.25 2.25 0 0 1 2.25 2.25v.905A3.75 3.75 0 0 1 18.696 20C17.13 21.344 14.89 22.001 12 22.001s-5.128-.657-6.691-2a3.75 3.75 0 0 1-1.305-2.844v-.907A2.25 2.25 0 0 1 6.254 14z'/%3E%3Cpath fill='url(%23fluentColorBotSparkle240)' d='M17.753 14a2.25 2.25 0 0 1 2.25 2.25v.905A3.75 3.75 0 0 1 18.696 20C17.13 21.344 14.89 22.001 12 22.001s-5.128-.657-6.691-2a3.75 3.75 0 0 1-1.305-2.844v-.907A2.25 2.25 0 0 1 6.254 14z'/%3E%3Cpath fill='url(%23fluentColorBotSparkle247)' d='M17.753 14a2.25 2.25 0 0 1 2.25 2.25v.905A3.75 3.75 0 0 1 18.696 20C17.13 21.344 14.89 22.001 12 22.001s-5.128-.657-6.691-2a3.75 3.75 0 0 1-1.305-2.844v-.907A2.25 2.25 0 0 1 6.254 14z'/%3E%3Cpath fill='url(%23fluentColorBotSparkle248)' d='M17.753 14a2.25 2.25 0 0 1 2.25 2.25v.905A3.75 3.75 0 0 1 18.696 20C17.13 21.344 14.89 22.001 12 22.001s-5.128-.657-6.691-2a3.75 3.75 0 0 1-1.305-2.844v-.907A2.25 2.25 0 0 1 6.254 14z'/%3E%3Cpath fill='url(%23fluentColorBotSparkle249)' d='M17.753 14a2.25 2.25 0 0 1 2.25 2.25v.905A3.75 3.75 0 0 1 18.696 20C17.13 21.344 14.89 22.001 12 22.001s-5.128-.657-6.691-2a3.75 3.75 0 0 1-1.305-2.844v-.907A2.25 2.25 0 0 1 6.254 14z'/%3E%3Cpath fill='url(%23fluentColorBotSparkle241)' d='m12 2.5l-.102.007a.75.75 0 0 0-.648.743L11.243 5h1.5l.007-1.75l-.007-.102A.75.75 0 0 0 12 2.5'/%3E%3Cpath fill='url(%23fluentColorBotSparkle24a)' d='M18 6.25A2.25 2.25 0 0 0 15.75 4h-7.5A2.25 2.25 0 0 0 6 6.25v3.5A2.25 2.25 0 0 0 8.25 12h7.5A2.25 2.25 0 0 0 18 9.75z'/%3E%3Cpath fill='url(%23fluentColorBotSparkle242)' d='M14.242 6.5a1.25 1.25 0 1 0 0 2.499a1.25 1.25 0 0 0 0-2.499'/%3E%3Cpath fill='url(%23fluentColorBotSparkle243)' d='M9.75 6.5a1.25 1.25 0 1 0 0 2.499a1.25 1.25 0 0 0 0-2.499'/%3E%3Cpath fill='url(%23fluentColorBotSparkle244)' d='m23.018 20.965l.765.248l.015.004a.303.303 0 0 1 .147.46a.3.3 0 0 1-.147.11l-.765.248a1.58 1.58 0 0 0-1 .999l-.248.764a.302.302 0 0 1-.57 0l-.249-.764a1.58 1.58 0 0 0-.999-1.002l-.765-.249a.303.303 0 0 1-.147-.46a.3.3 0 0 1 .147-.11l.765-.248a1.58 1.58 0 0 0 .984-.998l.249-.765a.302.302 0 0 1 .57 0l.249.764a1.58 1.58 0 0 0 .999.999'/%3E%3Cpath fill='url(%23fluentColorBotSparkle245)' d='M15.854 17.146a2.85 2.85 0 0 1 .685 1.114l.448 1.377a.544.544 0 0 0 1.026 0l.448-1.377a2.84 2.84 0 0 1 1.798-1.796l1.378-.448a.545.545 0 0 0 0-1.025l-.028-.007l-1.378-.448a2.84 2.84 0 0 1-1.798-1.796l-.447-1.377a.544.544 0 0 0-1.027 0l-.448 1.377l-.011.034a2.84 2.84 0 0 1-1.759 1.762l-1.378.448a.545.545 0 0 0 0 1.025l1.378.448c.42.14.8.376 1.113.689'/%3E%3Cdefs%3E%3ClinearGradient id='fluentColorBotSparkle240' x1='12.003' x2='15.623' y1='13.047' y2='26.573' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23885edb' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23e362f8'/%3E%3C/linearGradient%3E%3ClinearGradient id='fluentColorBotSparkle241' x1='11.209' x2='12.984' y1='2' y2='3.871' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%238b52f4'/%3E%3Cstop offset='1' stop-color='%233d35b1'/%3E%3C/linearGradient%3E%3ClinearGradient id='fluentColorBotSparkle242' x1='13.585' x2='15.479' y1='6.596' y2='9.865' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23fdfdfd'/%3E%3Cstop offset='1' stop-color='%23f9dcfa'/%3E%3C/linearGradient%3E%3ClinearGradient id='fluentColorBotSparkle243' x1='9.092' x2='10.986' y1='6.596' y2='9.865' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23fdfdfd'/%3E%3Cstop offset='1' stop-color='%23f9dcfa'/%3E%3C/linearGradient%3E%3ClinearGradient id='fluentColorBotSparkle244' x1='20' x2='23.002' y1='19.5' y2='23.499' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23ffa43d'/%3E%3Cstop offset='1' stop-color='%23fb5937'/%3E%3C/linearGradient%3E%3ClinearGradient id='fluentColorBotSparkle245' x1='20.071' x2='13.76' y1='18.714' y2='11.457' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23ff8a69'/%3E%3Cstop offset='1' stop-color='%23ffcd0f'/%3E%3C/linearGradient%3E%3CradialGradient id='fluentColorBotSparkle246' cx='0' cy='0' r='1' gradientTransform='matrix(19.19176 11.26316 -17.94042 30.56942 .311 11.538)' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23f08af4'/%3E%3Cstop offset='.535' stop-color='%239c6cfe'/%3E%3Cstop offset='1' stop-color='%234e44db'/%3E%3C/radialGradient%3E%3CradialGradient id='fluentColorBotSparkle247' cx='0' cy='0' r='1' gradientTransform='matrix(0 -3.69284 2.09609 0 17.542 17.693)' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%234e44db'/%3E%3Cstop offset='1' stop-color='%234e44db' stop-opacity='0'/%3E%3C/radialGradient%3E%3CradialGradient id='fluentColorBotSparkle248' cx='0' cy='0' r='1' gradientTransform='rotate(-134.995 11.873 4.725)scale(3.48134 2.611)' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%234e44db'/%3E%3Cstop offset='1' stop-color='%234e44db' stop-opacity='0'/%3E%3C/radialGradient%3E%3CradialGradient id='fluentColorBotSparkle249' cx='0' cy='0' r='1' gradientTransform='matrix(-5.53829 0 0 -2.17339 17.542 15.846)' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%234e44db'/%3E%3Cstop offset='1' stop-color='%234e44db' stop-opacity='0'/%3E%3C/radialGradient%3E%3CradialGradient id='fluentColorBotSparkle24a' cx='0' cy='0' r='1' gradientTransform='matrix(15.82499 12.22856 -23.10104 29.89508 1.8 .571)' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23f08af4'/%3E%3Cstop offset='.535' stop-color='%239c6cfe'/%3E%3Cstop offset='1' stop-color='%234e44db'/%3E%3C/radialGradient%3E%3C/defs%3E%3C/g%3E%3C/svg%3E");
+  }
+.typing-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #999;
+    border-radius: 50%;
+    animation: typing-animation 1.4s infinite ease-in-out;
+}
+
+.typing-dot:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.typing-dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes typing-animation {
+    0%, 60%, 100% {
+        transform: translateY(0);
+    }
+    30% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Chat input */
+.chat-input-container {
+    padding: 20px;
+    height: 100px;
+    justify-content: space-between;
+    display: flex;
+    border-top: 1px solid #e0e0e0;
+}
+div.fbut{
+    height: 100px;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+   margin-bottom: 10px;
+   margin-top: -25px;
+    margin-right: 100px;
+}
+.chat-input-wrapper {
+    display: flex;
+    align-items: flex-end;
+    gap: 0px;
+    width: 500px;
+    background-color: #ffffff;
+    border-radius: 50px;
+    padding: 10px 10px;
+    border: 2px solid #0066ff;
+}
+
+#message-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    resize: none;
+    max-height: auto;
+    padding: 5px;
+    outline: none;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.send-button {
+    background-color: transparent;
+    border: none;
+    color: #4a6cf7;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+.send-button:hover {
+    background-color: #f0f0f0;
+}
+
+.send-button:disabled {
+    color: #ccc;
+    cursor: not-allowed;
+}
+
+.disclaimer {
+    text-align: center;
+    color: #999;
+    font-size: 0.8rem;
+    margin-top: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .chat-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .message {
+        max-width: 90%;
+    }
+}
+/* Flight Search Button */
+.flight-search-button {
+background-color: transparent;
+border: none;
+color: #4a6cf7;
+cursor: pointer;
+padding: 5px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+transition: background-color 0.2s;
+margin-right: 5px;
+}
+
+.flight-search-button:hover {
+background-color: #f0f0f0;
+}
+
+.flight-search-button svg {
+transform: rotate(90deg);
+}
+
+/* Flight Search Container */
+.flight-search-container {
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 90%;
+max-width: 550px;
+background-color: #fff;
+border-radius: 12px;
+box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+z-index: 1000;
+display: none;
+flex-direction: column;
+overflow: hidden;
+max-height: 80vh;
+}
+
+.flight-search-container.active {
+display: flex;
+}
+
+.flight-search-overlay {
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: rgba(0, 0, 0, 0.5);
+z-index: 999;
+display: none;
+}
+
+.flight-search-overlay.active {
+display: block;
+}
+
+/* Flight Search Header */
+.flight-search-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 15px 20px;
+border-bottom: 1px solid #e0e0e0;
+}
+
+.flight-search-header h3 {
+font-size: 1.2rem;
+margin: 0;
+}
+
+.close-flight-search {
+background: transparent;
+border: none;
+cursor: pointer;
+color: #666;
+padding: 5px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+transition: background-color 0.2s;
+}
+
+.close-flight-search:hover {
+background-color: #f0f0f0;
+}
+
+/* Flight Search Form */
+.flight-search-form {
+padding: 20px;
+border-bottom: 1px solid #e0e0e0;
+}
+
+.flight-search-input-group {
+margin-bottom: 15px;
+}
+
+.flight-search-input-group label {
+display: block;
+margin-bottom: 5px;
+font-weight: 500;
+color: #555;
+font-size: 0.9rem;
+}
+
+.flight-search-input-group input,
+.flight-search-input-group select {
+width: 100%;
+padding: 10px 12px;
+border: 1px solid #e0e0e0;
+border-radius: 6px;
+font-size: 0.95rem;
+transition: border-color 0.2s;
+}
+
+.flight-search-input-group input:focus,
+.flight-search-input-group select:focus {
+border-color: #4a6cf7;
+outline: none;
+}
+
+.flight-date-inputs {
+display: flex;
+gap: 10px;
+}
+
+.flight-date-inputs select {
+flex: 1;
+}
+
+.search-flight-button {
+width: 100%;
+padding: 12px;
+background-color: #4a6cf7;
+color: white;
+border: none;
+border-radius: 6px;
+cursor: pointer;
+font-weight: 500;
+transition: background-color 0.2s;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 8px;
+}
+
+.search-flight-button:hover {
+background-color: #3a5ce5;
+}
+
+/* Flight Search Tabs */
+.flight-search-tabs {
+display: flex;
+border-bottom: 1px solid #e0e0e0;
+}
+
+.flight-tab {
+flex: 1;
+padding: 12px;
+background-color: transparent;
+border: none;
+border-bottom: 3px solid transparent;
+cursor: pointer;
+font-weight: 500;
+color: #666;
+transition: all 0.2s;
+}
+
+.flight-tab.active {
+color: #4a6cf7;
+border-bottom-color: #4a6cf7;
+}
+
+.flight-tab:hover:not(.active) {
+background-color: #f5f5f5;
+}
+
+/* Flight Results */
+.flight-results {
+padding: 20px;
+overflow-y: auto;
+flex: 1;
+}
+
+.flight-card {
+background-color: #f9f9f9;
+border-radius: 8px;
+padding: 15px;
+margin-bottom: 15px;
+border-left: 4px solid #4a6cf7;
+}
+
+.flight-header {
+display: flex;
+justify-content: space-between;
+margin-bottom: 12px;
+}
+
+.flight-number {
+font-weight: 600;
+font-size: 1.1rem;
+}
+
+.flight-status {
+font-size: 0.85rem;
+padding: 3px 8px;
+border-radius: 12px;
+font-weight: 500;
+}
+
+.flight-status.scheduled {
+background-color: #e6f4ff;
+color: #0074cc;
+}
+
+.flight-status.active {
+background-color: #e6f9f6;
+color: #00a389;
+}
+
+.flight-status.landed {
+background-color: #f0f4ff;
+color: #3366ff;
+}
+
+.flight-status.delayed {
+background-color: #fff4e6;
+color: #e67700;
+}
+
+.flight-status.cancelled {
+background-color: #fff1f0;
+color: #ff4d4f;
+}
+
+.flight-route {
+display: flex;
+align-items: center;
+margin-bottom: 15px;
+}
+
+.flight-airport {
+display: flex;
+flex-direction: column;
+flex: 1;
+}
+
+.flight-airport-code {
+font-size: 1.2rem;
+font-weight: 600;
+}
+
+.flight-airport-name {
+font-size: 0.85rem;
+color: #666;
+}
+
+.flight-route-line {
+flex: 2;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 0 15px;
+}
+
+.flight-route-line-inner {
+height: 2px;
+background-color: #ddd;
+width: 100%;
+position: relative;
+}
+
+.flight-route-plane {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+color: #4a6cf7;
+}
+
+.flight-details {
+display: flex;
+justify-content: space-between;
+font-size: 0.9rem;
+}
+
+.flight-detail-item {
+display: flex;
+flex-direction: column;
+align-items: center;
+border-right: 1px solid #eee;
+padding: 0 10px;
+flex: 1;
+}
+
+.flight-detail-item:last-child {
+border-right: none;
+}
+
+.flight-detail-label {
+color: #666;
+font-size: 0.8rem;
+margin-bottom: 3px;
+}
+
+.flight-detail-value {
+font-weight: 500;
+}
+
+/* Loading states */
+.flight-loading,
+.flight-no-results,
+.flight-error {
+text-align: center;
+padding: 30px 0;
+color: #666;
+}
+
+.flight-loading-spinner {
+width: 40px;
+height: 40px;
+border: 4px solid rgba(74, 108, 247, 0.2);
+border-left-color: #4a6cf7;
+border-radius: 50%;
+margin: 0 auto 15px;
+animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+to {
+transform: rotate(360deg);
+}
+}
+
+.hidden {
+display: none;
+}
+.disclaimer {
+    font-size: 12px;
+    color: #888;
+    margin-top: 8px;
+    text-align: center;
+}
+
+/* Weather Container Styles */
+.weather-container {
+    position: absolute;
+    width: 300px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    top: 80px;
+    margin-left: 40%;
+    left: 0;
+    z-index: 10;
+    display: none;
+}
+
+.weather-container.active {
+    display: block;
+}
+
+.weather-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: a16px;
+}
+
+.weather-header h3 {
+    color: #333;
+    font-size: 18px;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.weather-search {
+    display: flex;
+    margin-bottom: 16px;
+}
+
+.weather-search input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px 0 0 4px;
+    outline: none;
+}
+
+.weather-search button {
+    background: #4a90e2;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+
+.weather-content {
+    text-align: center;
+}
+
+.weather-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto;
+}
+
+.weather-temp {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.weather-desc {
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.weather-details {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 16px;
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.weather-detail {
+    text-align: center;
+}
+
+.weather-detail .label {
+    font-size: 12px;
+    color: #888;
+}
+
+.weather-detail .value {
+    font-weight: bold;
+    color: #333;
+}
+
+.weather-loader {
+    text-align: center;
+    padding: 20px;
+    display: none;
+}
+
+.weather-message {
+    text-align: center;
+    padding: 15px;
+    color: #666;
+    display: none;
+}
+.fluent-color--weather-sunny-low-24 {
+    display: inline-block;
+    width: 34px;
+    height: 34px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none'%3E%3Cpath fill='url(%23fluentColorWeatherSunnyLow240)' d='M17.125 14a5.5 5.5 0 1 0-10.25 0z'/%3E%3Cpath fill='url(%23fluentColorWeatherSunnyLow241)' d='M2 14a1 1 0 0 1 1-1h18a1 1 0 1 1 0 2H3a1 1 0 0 1-1-1'/%3E%3Cpath fill='url(%23fluentColorWeatherSunnyLow242)' d='M6 17a1 1 0 0 1 1-1h10a1 1 0 1 1 0 2H7a1 1 0 0 1-1-1'/%3E%3Cpath fill='url(%23fluentColorWeatherSunnyLow243)' d='M10 20a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2h-2a1 1 0 0 1-1-1'/%3E%3Cpath fill='url(%23fluentColorWeatherSunnyLow244)' d='M12 2a1 1 0 0 1 1 1v1.25a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1'/%3E%3Cpath fill='url(%23fluentColorWeatherSunnyLow245)' d='M4.793 4.793a1 1 0 0 1 1.414 0l1 1a1 1 0 0 1-1.414 1.414l-1-1a1 1 0 0 1 0-1.414'/%3E%3Cpath fill='url(%23fluentColorWeatherSunnyLow246)' d='M19.207 4.793a1 1 0 0 1 0 1.414l-1 1a1 1 0 1 1-1.414-1.414l1-1a1 1 0 0 1 1.414 0'/%3E%3Cdefs%3E%3ClinearGradient id='fluentColorWeatherSunnyLow240' x1='10.31' x2='14.51' y1='6.089' y2='14.585' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23ffe580'/%3E%3Cstop offset='.273' stop-color='%23ffbf70'/%3E%3Cstop offset='.57' stop-color='%23ffa342'/%3E%3Cstop offset='.96' stop-color='%23fa6673'/%3E%3C/linearGradient%3E%3ClinearGradient id='fluentColorWeatherSunnyLow241' x1='.531' x2='22' y1='13' y2='13' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='.061' stop-color='%230fafff'/%3E%3Cstop offset='1' stop-color='%230094f0'/%3E%3C/linearGradient%3E%3ClinearGradient id='fluentColorWeatherSunnyLow242' x1='.531' x2='22' y1='13' y2='13' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='.061' stop-color='%230fafff'/%3E%3Cstop offset='1' stop-color='%230094f0'/%3E%3C/linearGradient%3E%3ClinearGradient id='fluentColorWeatherSunnyLow243' x1='.531' x2='22' y1='13' y2='13' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='.061' stop-color='%230fafff'/%3E%3Cstop offset='1' stop-color='%230094f0'/%3E%3C/linearGradient%3E%3ClinearGradient id='fluentColorWeatherSunnyLow244' x1='9.696' x2='12.931' y1='1.699' y2='13.084' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23ffe580'/%3E%3Cstop offset='.273' stop-color='%23ffbf70'/%3E%3Cstop offset='.57' stop-color='%23ffa342'/%3E%3Cstop offset='.815' stop-color='%23fa6673'/%3E%3C/linearGradient%3E%3ClinearGradient id='fluentColorWeatherSunnyLow245' x1='9.696' x2='12.931' y1='1.699' y2='13.084' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23ffe580'/%3E%3Cstop offset='.273' stop-color='%23ffbf70'/%3E%3Cstop offset='.57' stop-color='%23ffa342'/%3E%3Cstop offset='.815' stop-color='%23fa6673'/%3E%3C/linearGradient%3E%3ClinearGradient id='fluentColorWeatherSunnyLow246' x1='9.696' x2='12.931' y1='1.699' y2='13.084' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23ffe580'/%3E%3Cstop offset='.273' stop-color='%23ffbf70'/%3E%3Cstop offset='.57' stop-color='%23ffa342'/%3E%3Cstop offset='.815' stop-color='%23fa6673'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/g%3E%3C/svg%3E");
+  }
+div.weather-header h3 span{
+    vertical-align: middle;
+    margin-right: 5px;
+}
+.fluent-color--weather-snowflake-24 {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none'%3E%3Cpath fill='url(%23fluentColorWeatherSnowflake240)' d='M12 2a1 1 0 0 1 1 1v2.551l1.707-1.706a1 1 0 1 1 1.414 1.414L13 8.379V11h2.62l3.121-3.12a1 1 0 1 1 1.414 1.413L18.45 11H21a1 1 0 1 1 0 2h-2.551l1.706 1.707a1 1 0 0 1-1.414 1.414L15.621 13H13v2.62l3.12 3.121a1 1 0 0 1-1.413 1.414L13 18.45V21a1 1 0 1 1-2 0v-2.551l-1.707 1.706a1 1 0 0 1-1.414-1.414L11 15.621V13H8.38l-3.121 3.12a1 1 0 0 1-1.414-1.413L5.55 13H3a1 1 0 1 1 0-2h2.551L3.845 9.293A1 1 0 1 1 5.259 7.88L8.379 11H11V8.38L7.88 5.259a1 1 0 0 1 1.413-1.414L11 5.55V3a1 1 0 0 1 1-1'/%3E%3Cpath fill='url(%23fluentColorWeatherSnowflake241)' d='M12 2a1 1 0 0 1 1 1v2.551l1.707-1.706a1 1 0 1 1 1.414 1.414L13 8.379V11h2.62l3.121-3.12a1 1 0 1 1 1.414 1.413L18.45 11H21a1 1 0 1 1 0 2h-2.551l1.706 1.707a1 1 0 0 1-1.414 1.414L15.621 13H13v2.62l3.12 3.121a1 1 0 0 1-1.413 1.414L13 18.45V21a1 1 0 1 1-2 0v-2.551l-1.707 1.706a1 1 0 0 1-1.414-1.414L11 15.621V13H8.38l-3.121 3.12a1 1 0 0 1-1.414-1.413L5.55 13H3a1 1 0 1 1 0-2h2.551L3.845 9.293A1 1 0 1 1 5.259 7.88L8.379 11H11V8.38L7.88 5.259a1 1 0 0 1 1.413-1.414L11 5.55V3a1 1 0 0 1 1-1'/%3E%3Cdefs%3E%3ClinearGradient id='fluentColorWeatherSnowflake240' x1='17' x2='7.625' y1='18.25' y2='3.875' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%234894fe'/%3E%3Cstop offset='.495' stop-color='%230fafff'/%3E%3Cstop offset='1' stop-color='%2329c3ff'/%3E%3C/linearGradient%3E%3ClinearGradient id='fluentColorWeatherSnowflake241' x1='6.839' x2='22.114' y1='2.806' y2='22.683' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='.379' stop-color='%23ff6ce8' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23ff6ce8' stop-opacity='0.7'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/g%3E%3C/svg%3E");
+  }
+  .ph--airplane-in-flight-duotone {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cg fill='%230066ff'%3E%3Cpath d='M240 136v24H61.06a32 32 0 0 1-30.65-22.8L16.34 90.3A8 8 0 0 1 24 80h8l24 24h36.91L80.42 66.53A8 8 0 0 1 88 56h8l48 48h64a32 32 0 0 1 32 32' opacity='0.2'/%3E%3Cpath d='M224 216a8 8 0 0 1-8 8H72a8 8 0 1 1 0-16h144a8 8 0 0 1 8 8m24-80v24a8 8 0 0 1-8 8H61.07a39.75 39.75 0 0 1-38.31-28.51L8.69 92.6A16 16 0 0 1 24 72h8a8 8 0 0 1 5.65 2.34L59.32 96h22.49l-9-26.94A16 16 0 0 1 88 48h8a8 8 0 0 1 5.66 2.34L147.32 96H208a40 40 0 0 1 40 40m-16 0a24 24 0 0 0-24-24h-64a8 8 0 0 1-5.65-2.34L92.69 64H88l12.49 37.47A8 8 0 0 1 92.91 112H56a8 8 0 0 1-5.66-2.34L28.69 88H24l14.07 46.9a23.85 23.85 0 0 0 23 17.1H232Z'/%3E%3C/g%3E%3C/svg%3E");
+  }
+div.fbut button {
+   margin-right: 19px;
+   background-color: black;
+}
+div.fbut button:hover{
+    background-color: #091547;
+}
+    /* Hotel Button Styles */
+    .hotel_btn7d2c {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 47px;
+        margin-top: 2px;
+        width: 47px;
+        background-color: #000000;
+        color: white;
+        padding: 8px;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(63, 81, 181, 0.2);
+        transition: all 0.3s ease;
+    }
+
+    .hotel_btn7d2c:hover {
+        background-color: #303f9f;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(63, 81, 181, 0.3);
+    }
+
+    .hotel_btn7d2c:active {
+        transform: translateY(0);
+    }
+
+   
+
+    /* Hotel Container Styles */
+    .hotel_container67e7 {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.4s ease;
+    }
+
+    .hotel_container67e7.active {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    .hotel_search_panel4000db {
+        background-color: white;
+        width: 90%;
+        max-width: 600px;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        transform: translateY(30px);
+        transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .hotel_container67e7.active .hotel_search_panel4000db {
+        transform: translateY(0);
+    }
+
+    .hotel_header64000 {
+        background-color: #3f51b5;
+        color: white;
+        padding: 16px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .hotel_close_btn000db {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        transition: background-color 0.3s ease;
+    }
+
+    .hotel_close_btn000db:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .hotel_search_form6f7d2 {
+        padding: 24px;
+    }
+
+    .form_group7d2c {
+        margin-bottom: 16px;
+    }
+
+    .form_group7d2c label {
+        display: block;
+        font-weight: 500;
+        margin-bottom: 8px;
+        color: #555;
+    }
+
+    .form_input067e7 {
+        width: 100%;
+        padding: 12px 16px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+    }
+
+    .form_input067e7:focus {
+        border-color: #3f51b5;
+        outline: none;
+    }
+
+    .hotel_search_btn6f7d2 {
+        background-color: #3f51b5;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 8px;
+        transition: background-color 0.3s ease;
+    }
+
+    .hotel_search_btn6f7d2:hover {
+        background-color: #303f9f;
+    }
+
+    .form_row4000db {
+        display: flex;
+        gap: 16px;
+    }
+
+    .form_row4000db .form_group7d2c {
+        flex: 1;
+    }
+
+    .hotel_results_section7d2c {
+        padding: 0 24px 24px;
+        display: none;
+        max-height: 300px;
+        overflow-y: auto;
+    }
+
+    .hotel_card67e7 {
+        padding: 16px;
+        border: 1px solid #eee;
+        border-radius: 8px;
+        margin-bottom: 12px;
+        transition: box-shadow 0.3s ease;
+    }
+
+    .hotel_card67e7:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .hotel_name64000 {
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #303f9f;
+    }
+
+    .hotel_address67e7 {
+        color: #777;
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+
+    .hotel_price6f7d2 {
+        font-weight: 600;
+        color: #4caf50;
+    }
+
+    .loading_indicator4000db {
+        text-align: center;
+        padding: 24px;
+        display: none;
+    }
+
+    .loading_spinner000db {
+        width: 40px;
+        height: 40px;
+        border: 4px solid rgba(63, 81, 181, 0.2);
+        border-left-color: #3f51b5;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 16px;
+    }
+
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+    .fluent-color--building-multiple-20 {
+        display: inline-block;
+        width: 47px;
+        height: 47px;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cg fill='none'%3E%3Cpath fill='url(%23fluentColorBuildingMultiple200)' d='M2 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v13a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z'/%3E%3Cpath fill='url(%23fluentColorBuildingMultiple201)' fill-opacity='0.2' d='M2 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v13a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z'/%3E%3Cpath fill='url(%23fluentColorBuildingMultiple202)' d='M2 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v13a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z'/%3E%3Cpath fill='url(%23fluentColorBuildingMultiple203)' d='M5.25 6.5a.75.75 0 1 0 0-1.5a.75.75 0 0 0 0 1.5'/%3E%3Cpath fill='url(%23fluentColorBuildingMultiple204)' d='M6 8.75a.75.75 0 1 0-1.5 0a.75.75 0 0 0 1.5 0'/%3E%3Cpath fill='url(%23fluentColorBuildingMultiple205)' d='M6 11.75a.75.75 0 1 1-1.5 0a.75.75 0 0 1 1.5 0'/%3E%3Cpath fill='url(%23fluentColorBuildingMultiple206)' d='M5.25 15.5a.75.75 0 1 0 0-1.5a.75.75 0 0 0 0 1.5'/%3E%3Cpath fill='url(%23fluentColorBuildingMultiple207)' d='M16 5a2 2 0 0 1 2 2v10a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1V7a2 2 0 0 1 2-2z'/%3E%3Cpath fill='url(%23fluentColorBuildingMultiple208)' d='M11 15.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5V18h-4z'/%3E%3Cpath fill='url(%23fluentColorBuildingMultiple209)' d='M11.25 9.5a.75.75 0 1 0 0-1.5a.75.75 0 0 0 0 1.5'/%3E%3Cpath fill='url(%23fluentColorBuildingMultiple20a)' d='M14.75 9.5a.75.75 0 1 0 0-1.5a.75.75 0 0 0 0 1.5'/%3E%3Cpath fill='url(%23fluentColorBuildingMultiple20b)' d='M12 11.75a.75.75 0 1 1-1.5 0a.75.75 0 0 1 1.5 0'/%3E%3Cpath fill='url(%23fluentColorBuildingMultiple20c)' d='M14.75 12.5a.75.75 0 1 0 0-1.5a.75.75 0 0 0 0 1.5'/%3E%3Cdefs%3E%3ClinearGradient id='fluentColorBuildingMultiple200' x1='2.357' x2='12.451' y1='5' y2='11.555' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23a3a3ff'/%3E%3Cstop offset='1' stop-color='%235750e2'/%3E%3C/linearGradient%3E%3ClinearGradient id='fluentColorBuildingMultiple201' x1='5.5' x2='9' y1='4' y2='4' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%2330116e' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%2330116e'/%3E%3C/linearGradient%3E%3ClinearGradient id='fluentColorBuildingMultiple202' x1='9.125' x2='9' y1='6.875' y2='2' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23a3a3ff' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23a3a3ff'/%3E%3C/linearGradient%3E%3ClinearGradient id='fluentColorBuildingMultiple203' x1='4' x2='6' y1='4.5' y2='16' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23fdfdfd'/%3E%3Cstop offset='1' stop-color='%23d1d1ff'/%3E%3C/linearGradient%3E%3ClinearGradient id='fluentColorBuildingMultiple204' x1='4' x2='6' y1='4.5' y2='16' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23fdfdfd'/%3E%3Cstop offset='1' stop-color='%23d1d1ff'/%3E%3C/linearGradient%3E%3ClinearGradient id='fluentColorBuildingMultiple205' x1='4' x2='6' y1='4.5' y2='16' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23fdfdfd'/%3E%3Cstop offset='1' stop-color='%23d1d1ff'/%3E%3C/linearGradient%3E%3ClinearGradient id='fluentColorBuildingMultiple206' x1='4' x2='6' y1='4.5' y2='16' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23fdfdfd'/%3E%3Cstop offset='1' stop-color='%23d1d1ff'/%3E%3C/linearGradient%3E%3ClinearGradient id='fluentColorBuildingMultiple207' x1='8' x2='20.405' y1='5.406' y2='17.623' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%233bd5ff'/%3E%3Cstop offset='1' stop-color='%232764e7'/%3E%3C/linearGradient%3E%3ClinearGradient id='fluentColorBuildingMultiple208' x1='11.143' x2='13.109' y1='15.563' y2='18.287' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%230067bf'/%3E%3Cstop offset='1' stop-color='%23003580'/%3E%3C/linearGradient%3E%3ClinearGradient id='fluentColorBuildingMultiple209' x1='12' x2='13.5' y1='7.5' y2='13.5' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23fdfdfd'/%3E%3Cstop offset='1' stop-color='%23b3e0ff'/%3E%3C/linearGradient%3E%3ClinearGradient id='fluentColorBuildingMultiple20a' x1='12' x2='13.5' y1='7.5' y2='13.5' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23fdfdfd'/%3E%3Cstop offset='1' stop-color='%23b3e0ff'/%3E%3C/linearGradient%3E%3ClinearGradient id='fluentColorBuildingMultiple20b' x1='12' x2='13.5' y1='7.5' y2='13.5' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23fdfdfd'/%3E%3Cstop offset='1' stop-color='%23b3e0ff'/%3E%3C/linearGradient%3E%3ClinearGradient id='fluentColorBuildingMultiple20c' x1='12' x2='13.5' y1='7.5' y2='13.5' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23fdfdfd'/%3E%3Cstop offset='1' stop-color='%23b3e0ff'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/g%3E%3C/svg%3E");
+      }
+      .carbon--currency {
+        display: inline-block;
+        width: 34px;
+        height: 34px;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%230066ff' d='M21 12v-2h-4V7h-2v3h-2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h6v3h-8v2h4v3h2v-3h2a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2h-6v-3Z'/%3E%3Cpath fill='%230066ff' d='M16 4A12 12 0 1 1 4 16A12.035 12.035 0 0 1 16 4m0-2a14 14 0 1 0 14 14A14.04 14.04 0 0 0 16 2'/%3E%3C/svg%3E");
+      }
+      .c001 {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-top: -630px;
+        display: none;
+        position: relative;
+    }
+    .c002 {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .c003 {
+        color: #2c3e50;
+        margin: 0;
+        font-size: 24px;
+    }
+    .c004 {
+        color: #7f8c8d;
+        margin-top: 5px;
+    }
+    .c005 {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+    .c006 {
+        flex: 1 0 200px;
+    }
+    .c007 {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #2c3e50;
+    }
+    .c008, .c009 {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+    .b001 {
+        display: block;
+        width: 200px;
+        margin: 20px auto;
+        padding: 12px 20px;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .b001:hover {
+        background-color: #2980b9;
+    }
+    .c010 {
+        margin-top: 30px;
+        text-align: center;
+    }
+    .c011 {
+        font-size: 18px;
+        margin-bottom: 10px;
+        color: #2c3e50;
+    }
+    .c012 {
+        font-size: 32px;
+        font-weight: bold;
+        color: #16a085;
+    }
+    .c013 {
+        margin-top: 10px;
+        color: #7f8c8d;
+    }
+    .c014 {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 15px;
+        margin-top: 30px;
+    }
+    .c015 {
+        background-color: #f8f9fa;
+        border-radius: 6px;
+        padding: 15px;
+        text-align: center;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        transition: transform 0.2s;
+    }
+    .c015:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .c016 {
+        font-weight: bold;
+        color: #2c3e50;
+    }
+    .c017 {
+        margin-top: 8px;
+        font-size: 18px;
+        color: #16a085;
+    }
+    .c018 {
+        text-align: center;
+        margin: 20px 0;
+        display: none;
+    }
+    .c019 {
+        color: #e74c3c;
+        text-align: center;
+        margin: 20px 0;
+        display: none;
+    }
+    button.b002 {
+        display: block;
+        width: 49px;
+       height: 49px;
+        background-color: #ffffff;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    button.b002 span{
+        vertical-align: middle;
+        border-radius: 50%;
+    }
+    .b002:hover {
+        background-color: #27ae60;
+    }
+    .c020 {
+        text-align: center;
+        margin-top: 20px;
+        color: #7f8c8d;
+        font-size: 14px;
+    }
+    /* Close button styles */
+    .close-btn {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background-color: #e74c3c;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        transition: background-color 0.3s;
+    }
+    .close-btn:hover {
+        background-color: #c0392b;
+    }

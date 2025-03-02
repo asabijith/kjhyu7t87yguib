@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Up Profile - AI Chat</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+   
+    <div class="entername-container">
+        <video autoplay loop muted playsinline id="background-video">
+            <source src="https://dl.dropbox.com/scl/fi/jvs4e6tru9szqhtxin5wl/q.mp4?rlkey=w3344iaql3kvg018y74eplh42&st=22uygfrt&dl=0" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="entername-card">
+            <div class="entername-header">
+                <h1>Welcome to Glide AI</h1>
+                <p>Please tell us your name to continue</p>
+            </div>
+            <div class="entername-form">
+                <input type="text" id="username" placeholder="Your name" required>
+                <div class="avatar-selection">
+                    <p>Choose an avatar:</p>
+                    <div class="avatar-options">
+                        <div class="avatar-option selected" data-avatar="avatar1.png">
+                            <img src="1.png" alt="Avatar 1">
+                        </div>
+                        <div class="avatar-option" data-avatar="avatar2.png">
+                            <img src="2.png" alt="Avatar 2">
+                        </div>
+                        <div class="avatar-option" data-avatar="avatar3.png">
+                            <img src="3.png" alt="Avatar 3">
+                        </div>
+                        <div class="avatar-option" data-avatar="avatar4.png">
+                            <img src="avatar4.png" alt="Avatar 4">
+                        </div>
+                    </div>
+                </div>
+                <button id="continue-button" class="entername-button"><span class="carbon--continue-filled"></span>Continue to Chat</button>
+            </div>
+            <div id="entername-error" class="error-message hidden"></div>
+        </div>
+    </div>
+    
+    <!-- Firebase SDK (using compat version) -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    <script src="entername.js"></script>
+</body>
+</html>

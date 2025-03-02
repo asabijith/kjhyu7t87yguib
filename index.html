@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Doto:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Glide AI</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+
+  
+
+
+
+    
+    <video autoplay loop muted playsinline id="background-video">
+        <source src="https://dl.dropbox.com/scl/fi/65x62kt0jcged92qen048/r.mp4?rlkey=qzk2k8eo71fjb0t1xkaboe161&st=6b8422px&dl=0" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+               
+                <h1 id="animated-text" class="animated-text"></h1>
+                <p>Log in to start chatting with Glide AI<span class="ri--pulse-ai-fill"></span>assistant</p>
+            </div>
+            <div class="login-options">
+                <button id="email-login" class="login-button">
+                    <span class="flat-color-icons--google"></span>
+                    Continue with Gmail
+                </button>
+                <button id="microsoft-login" class="login-button">
+                    <span class="logos--microsoft-icon"></span>
+                    Continue with Microsoft
+                </button>
+            </div>
+            <div id="email-form" class="email-form hidden">
+                <input type="email" id="email" placeholder="Gmail" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button id="login-submit" class="login-button primary"><span class="majesticons--login-half-circle"></span>Log In</button>
+                <p class="login-footer">Don't have an account <span class="line-md--account-alert-loop"></span>? <a href="#" id="signup-link">Sign up</a></p>
+            </div>
+            <div id="signup-form" class="email-form hidden">
+                <input type="email" id="signup-email" placeholder="Email" required>
+                <input type="password" id="signup-password" placeholder="Password" required>
+                <input type="password" id="confirm-password" placeholder="Confirm Password" required>
+                <button id="signup-submit" class="login-button primary">Sign Up</button>
+                <p class="login-footer">Already have an account<span class="mdi--account-arrow-right"></span>? <a href="#" id="login-link">Log in</a></p>
+            </div>
+            <div id="login-error" class="error-message hidden"></div>
+        </div>
+    </div>
+    
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="login.js"></script>
+</body>
+</html>
+
